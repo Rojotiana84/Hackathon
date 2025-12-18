@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.chercher{
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+}
