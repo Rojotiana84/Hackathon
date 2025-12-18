@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoCheck Jeunes | Vérification Avancée</title>
+    <link rel="stylesheet" href="/css/style2.css">
+    <script src="/js/index2.js" defer></script>
+</head>
+<body data-theme="light">
+
+<div class="container">
+    <header class="site-header">
+        <div class="header-content">
+            <div class="header-text">
+                <h1>🔍 InfoCheck Jeunes</h1>
+                <p id="subText" class="sub">Vérifie une information avant de la partager</p>
+            </div>
+            <div class="header-controls">
+                <div class="lang-icons">
+                    <button class="lang-btn active" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="mg">MG</button>
+                </div>
+                <div class="theme-switch">
+                    <button id="lightMode" class="theme-btn active">☀️</button>
+                    <button id="darkMode" class="theme-btn">🌙</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <p id="leadText" class="lead">Prototype IA pour le hackathon : vérification mondiale en temps réel.</p>
+    </section>
+
+    <section class="card">
+        <form id="checkForm" onsubmit="return false;">
+            <label id="labelLink">Lien ou mot-clé (optionnel)</label>
+            <input type="text" id="link" placeholder="Ex : Facebook, WhatsApp...">
+
+            <label id="labelText" style="display:block; margin-top:15px;">Texte à vérifier</label>
+            <textarea id="text" rows="5" placeholder="Colle ici l'information à analyser..."></textarea>
+
+            <div class="btn-row">
+                <button type="button" id="verifyBtn" class="btn btn-primary">
+                    <span id="btnIcon">🔍</span>
+                    <div class="loader" id="loader"></div>
+                    <span id="btnText">Vérifier maintenant</span>
+                </button>
+                <button type="button" id="resetBtn" class="btn btn-secondary">
+                    <span>🗑️</span> <span id="resetText">Effacer</span>
+                </button>
+            </div>
+        </form>
+
+        <div id="resultNote" class="result-note">
+            <div class="result-header" id="resHeader">
+                <span id="resIcon"></span> <span id="resTitle"></span>
+            </div>
+            <div class="result-body">
+                <p id="resDesc"></p>
+                <div id="resDetails" class="info-grid" style="display:grid; grid-template-columns: 1fr 1fr; margin-top:15px; border-top:1px solid rgba(0,0,0,0.1); padding-top:10px;">
+                    <div><h4 style="font-size:0.7rem; color:var(--muted);">SOURCE</h4><p id="valOrigin">-</p></div>
+                    <div><h4 style="font-size:0.7rem; color:var(--muted);">DATE</h4><p id="valDate">-</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer-note">© 2025 — InfoCheck Jeunes | Hackathon Project</div>
+</div>
+
+
+</body>
+</html>

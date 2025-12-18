@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VerificationService {
 
-    private final git VerificationRepository repository;
+    private final VerificationRepository repository;
 
     private static final List<String> MOTS_SUSPECTS =
             List.of("gratuit", "argent", "urgent", "cliquez", "free", "win", "bola");
