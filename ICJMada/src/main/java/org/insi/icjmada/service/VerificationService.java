@@ -7,34 +7,32 @@ import org.insi.icjmada.repository.VerificationRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class VerificationService {
 
     private final VerificationRepository repository;
-
-    private static final List<String> MOTS_SUSPECTS =
-            List.of("gratuit", "argent", "urgent", "cliquez", "free", "win", "bola");
+    private final GeminiService geminiService;
 
     public VerificationResult verifier(String texte) {
 
-        boolean estVrai = MOTS_SUSPECTS.stream()
-                .noneMatch(texte.toLowerCase()::contains);
+        String analyseIA = geminiService.analyze(texte);
+
+        // ✅ Utilisation correcte du parseur JSON + fallback regex
+        boolean estVrai = geminiService.isTrue(analyseIA);
 
         VerificationEntity entity = new VerificationEntity();
         entity.setTexte(texte);
         entity.setVrai(estVrai);
-        entity.setSource("InfoCheck IA");
+        entity.setSource("Gemini IA");
         entity.setCreatedAt(LocalDateTime.now());
-
         repository.save(entity);
 
         return new VerificationResult(
                 estVrai,
-                estVrai ? "Information fiable" : "Information suspecte",
-                "InfoCheck IA",
+                analyseIA,
+                "Gemini IA",
                 LocalDateTime.now().toString()
         );
     }
